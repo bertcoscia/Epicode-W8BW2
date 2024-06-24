@@ -1,5 +1,10 @@
 # Epicode-W8BW2 - Spotify Clone
 
+![Original Repository](https://github.com/Petrov-Teo/Build_Week_2_Team_2)
+
+![Contributors](https://github.com/Petrov-Teo/Build_Week_2_Team_2/graphs/contributors)
+
+
 ### Pagine Richieste:
 #### HOMEPAGE:
 
