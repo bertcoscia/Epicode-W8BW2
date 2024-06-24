@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Spotify</title>
+    <link
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+      href="https://open.spotifycdn.com/cdn/images/favicon32.b64ecc03.png"
+    />
+    <link
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+      href="https://open.spotifycdn.com/cdn/images/favicon16.1c487bff.png"
+    />
+    <!-- Import di Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Import CSS personalizzati -->
+    <link rel="stylesheet" href="./assets 2/css/circular-font.css" />
+    <link rel="stylesheet" href="./assets 2/css/general.css" />
+    <link rel="stylesheet" href="./assets 2/css/album.css" />
+  </head>
+
+  <body class="text-light">
+    <!-- MOBILE NAVBAR -->
+    <div class="container-fluid d-md-none mobile-navbar" id="mobileNavbar">
+      <nav class="d-flex py-3">
+        <button class="btn">
+          <a class="text-decoration-none" href="/">
+            <svg
+              data-encore-id="icon"
+              role="img"
+              aria-hidden="true"
+              class="d-none"
+              viewBox="0 0 24 24"
+              width="25"
+              height="25"
+              fill="#ffffff"
+            >
+              <path
+                d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6H20V7.577l-7.5-4.33zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1 1.732V21a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6h-3v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.577a2 2 0 0 1 1-1.732l7.5-4.33z"
+              ></path>
+            </svg>
+            <svg
+              data-encore-id="icon"
+              role="img"
+              aria-hidden="true"
+              class=""
+              viewBox="0 0 24 24"
+              width="25"
+              height="25"
+              fill="#ffffff"
+            >
+              <path
+                d="M13.5 1.515a3 3 0 0 0-3 0L3 5.845a2 2 0 0 0-1 1.732V21a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6h4v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7.577a2 2 0 0 0-1-1.732l-7.5-4.33z"
+              ></path>
+            </svg>
+            <small
+              class="encore-text encore-text-body-medium-bold"
+              data-encore-id="text"
+              >Home</small
+            >
+          </a>
+        </button>
+
+        <button class="btn">
+          <a href="./search.html" class="link-subtle">
+            <svg
+              data-encore-id="icon"
+              role="img"
+              aria-hidden="true"
+              class=""
+              viewBox="0 0 24 24"
+              width="25"
+              height="25"
+              fill="#a7a7a7"
+            >
+              <path
+                d="M10.533 1.27893C5.35215 1.27893 1.12598 5.41887 1.12598 10.5579C1.12598 15.697 5.35215 19.8369 10.533 19.8369C12.767 19.8369 14.8235 19.0671 16.4402 17.7794L20.7929 22.132C21.1834 22.5226 21.8166 22.5226 22.2071 22.132C22.5976 21.7415 22.5976 21.1083 22.2071 20.7178L17.8634 16.3741C19.1616 14.7849 19.94 12.7634 19.94 10.5579C19.94 5.41887 15.7138 1.27893 10.533 1.27893ZM3.12598 10.5579C3.12598 6.55226 6.42768 3.27893 10.533 3.27893C14.6383 3.27893 17.94 6.55226 17.94 10.5579C17.94 14.5636 14.6383 17.8369 10.533 17.8369C6.42768 17.8369 3.12598 14.5636 3.12598 10.5579Z"
+              ></path>
+            </svg>
+            <svg
+              data-encore-id="icon"
+              role="img"
+              aria-hidden="true"
+              class="d-none"
+              viewBox="0 0 24 24"
+              width="25"
+              height="25"
+              fill="#ffffff"
+            >
+              <path
+                d="M15.356 10.558c0 2.623-2.16 4.75-4.823 4.75-2.664 0-4.824-2.127-4.824-4.75s2.16-4.75 4.824-4.75c2.664 0 4.823 2.127 4.823 4.75z"
+              ></path>
+              <path
+                d="M1.126 10.558c0-5.14 4.226-9.28 9.407-9.28 5.18 0 9.407 4.14 9.407 9.28a9.157 9.157 0 0 1-2.077 5.816l4.344 4.344a1 1 0 0 1-1.414 1.414l-4.353-4.353a9.454 9.454 0 0 1-5.907 2.058c-5.18 0-9.407-4.14-9.407-9.28zm9.407-7.28c-4.105 0-7.407 3.274-7.407 7.28s3.302 7.279 7.407 7.279 7.407-3.273 7.407-7.28c0-4.005-3.302-7.278-7.407-7.278z"
+              ></path>
+            </svg>
+            <small
+              class="encore-text encore-text-body-medium-bold"
+              data-encore-id="text"
+              >Cerca</small
+            >
+          </a>
+        </button>
+
+        <button class="btn">
+          <a href="#">
+            <span>
+              <small>
+                <svg
+                  data-encore-id="icon"
+                  role="img"
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  class=""
+                  width="25"
+                  height="25"
+                  fill="#a7a7a7"
+                >
+                  <path
+                    d="M3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zM15.5 2.134A1 1 0 0 0 14 3v18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6.464a1 1 0 0 0-.5-.866l-6-3.464zM9 2a1 1 0 0 0-1 1v18a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1z"
+                  ></path>
+                </svg>
+                La tua libreria
+              </small>
+            </span>
+          </a>
+        </button>
+      </nav>
+    </div>
+
+    <!-- MOBILE PLAYER -->
+    <div class="container-fluid d-md-none rounded positionMobyle">
+      <div class="d-flex align-items-center justify-content-between py-2">
+        <div class="d-flex align-items-center">
+          <img
+            id="imgAlbumMobile"
+            src="./assets 2/imgs/main/image-11.jpg"
+            alt=""
+            width="60"
+            class="me-3 rounded-1"
+          />
+          <div id="mobilePlayerTitle" class="line-clamp">Easy Come Easy Go</div>
+        </div>
+        <div class="d-flex">
+          <button class="btn">
+            <svg
+              data-encore-id="icon"
+              role="img"
+              aria-hidden="true"
+              viewBox="0 0 16 16"
+              class="Svg-sc-ytk21e-0 dYnaPI"
+              width="25"
+              height="25"
+              fill="#b3b3b3"
+            >
+              <path
+                d="M6 2.75C6 1.784 6.784 1 7.75 1h6.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15h-6.5A1.75 1.75 0 0 1 6 13.25V2.75zm1.75-.25a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h6.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25h-6.5zm-6 0a.25.25 0 0 0-.25.25v6.5c0 .138.112.25.25.25H4V11H1.75A1.75 1.75 0 0 1 0 9.25v-6.5C0 1.784.784 1 1.75 1H4v1.5H1.75zM4 15H2v-1.5h2V15z"
+              ></path>
+              <path
+                d="M13 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm-1-5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
+              ></path>
+            </svg>
+          </button>
+          <button class="btn">
+            <svg
+              data-encore-id="icon"
+              role="img"
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              width="25"
+              height="25"
+              fill="#b3b3b3"
+            >
+              <path
+                d="M5.21 1.57a6.757 6.757 0 0 1 6.708 1.545.124.124 0 0 0 .165 0 6.741 6.741 0 0 1 5.715-1.78l.004.001a6.802 6.802 0 0 1 5.571 5.376v.003a6.689 6.689 0 0 1-1.49 5.655l-7.954 9.48a2.518 2.518 0 0 1-3.857 0L2.12 12.37A6.683 6.683 0 0 1 .627 6.714 6.757 6.757 0 0 1 5.21 1.57zm3.12 1.803a4.757 4.757 0 0 0-5.74 3.725l-.001.002a4.684 4.684 0 0 0 1.049 3.969l.009.01 7.958 9.485a.518.518 0 0 0 .79 0l7.968-9.495a4.688 4.688 0 0 0 1.049-3.965 4.803 4.803 0 0 0-3.931-3.794 4.74 4.74 0 0 0-4.023 1.256l-.008.008a2.123 2.123 0 0 1-2.9 0l-.007-.007a4.757 4.757 0 0 0-2.214-1.194z"
+              ></path>
+            </svg>
+          </button>
+          <button class="btn mobile-play-pause white">
+            <svg
+              id="mobile-play-pause"
+              data-encore-id="icon"
+              role="img"
+              aria-hidden="true"
+              viewBox="0 0 16 16"
+              class="Svg-sc-ytk21e-0 dYnaPI"
+              width="25"
+              height="25"
+              fill="#ffffff"
+            >
+              <path
+                d=" M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE CONTAINER -->
+    <div class="d-md-flex page-container position-relative">
+      <!-- LEFT SIDEBAR -->
+      <aside class="d-none d-md-block mt-2 ps-2 nav-container">
+        <!-- PRIMO PANNELLO -->
+        <nav class="rounded py-3 mb-2">
+          <div class="container">
+            <ul class="ps-0">
+              <li class="mb-3">
+                <a class="text-decoration-none" href="/">
+                  <svg
+                    data-encore-id="icon"
+                    role="img"
+                    aria-hidden="true"
+                    class="d-none me-3"
+                    viewBox="0 0 24 24"
+                    width="25"
+                    height="25"
+                    fill="#ffffff"
+                  >
+                    <path
+                      d="M12.5 3.247a1 1 0 0 0-1 0L4 7.577V20h4.5v-6a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v6H20V7.577l-7.5-4.33zm-2-1.732a3 3 0 0 1 3 0l7.5 4.33a2 2 0 0 1 1 1.732V21a1 1 0 0 1-1 1h-6.5a1 1 0 0 1-1-1v-6h-3v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7.577a2 2 0 0 1 1-1.732l7.5-4.33z"
+                    ></path>
+                  </svg>
+                  <svg
+                    data-encore-id="icon"
+                    role="img"
+                    aria-hidden="true"
+                    class="me-3"
+                    viewBox="0 0 24 24"
+                    width="25"
+                    height="25"
+                    fill="#ffffff"
+                  >
+                    <path
+                      d="M13.5 1.515a3 3 0 0 0-3 0L3 5.845a2 2 0 0 0-1 1.732V21a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-6h4v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V7.577a2 2 0 0 0-1-1.732l-7.5-4.33z"
+                    ></path>
+                  </svg>
+                  <span
+                    class="encore-text encore-text-body-medium-bold"
+                    data-encore-id="text"
+                    >Home</span
+                  >
+                </a>
+              </li>
+              <li class="mb-3">
+                <a href="./search.html" class="link-subtle">
+                  <svg
+                    data-encore-id="icon"
+                    role="img"
+                    aria-hidden="true"
+                    class="me-3"
+                    viewBox="0 0 24 24"
+                    width="25"
+                    height="25"
+                    fill="#a7a7a7"
+                  >
+                    <path
+                      d="M10.533 1.27893C5.35215 1.27893 1.12598 5.41887 1.12598 10.5579C1.12598 15.697 5.35215 19.8369 10.533 19.8369C12.767 19.8369 14.8235 19.0671 16.4402 17.7794L20.7929 22.132C21.1834 22.5226 21.8166 22.5226 22.2071 22.132C22.5976 21.7415 22.5976 21.1083 22.2071 20.7178L17.8634 16.3741C19.1616 14.7849 19.94 12.7634 19.94 10.5579C19.94 5.41887 15.7138 1.27893 10.533 1.27893ZM3.12598 10.5579C3.12598 6.55226 6.42768 3.27893 10.533 3.27893C14.6383 3.27893 17.94 6.55226 17.94 10.5579C17.94 14.5636 14.6383 17.8369 10.533 17.8369C6.42768 17.8369 3.12598 14.5636 3.12598 10.5579Z"
+                    ></path>
+                  </svg>
+                  <svg
+                    data-encore-id="icon"
+                    role="img"
+                    aria-hidden="true"
+                    class="me-3 d-none"
+                    viewBox="0 0 24 24"
+                    width="25"
+                    height="25"
+                    fill="#ffffff"
+                  >
+                    <path
+                      d="M15.356 10.558c0 2.623-2.16 4.75-4.823 4.75-2.664 0-4.824-2.127-4.824-4.75s2.16-4.75 4.824-4.75c2.664 0 4.823 2.127 4.823 4.75z"
+                    ></path>
+                    <path
+                      d="M1.126 10.558c0-5.14 4.226-9.28 9.407-9.28 5.18 0 9.407 4.14 9.407 9.28a9.157 9.157 0 0 1-2.077 5.816l4.344 4.344a1 1 0 0 1-1.414 1.414l-4.353-4.353a9.454 9.454 0 0 1-5.907 2.058c-5.18 0-9.407-4.14-9.407-9.28zm9.407-7.28c-4.105 0-7.407 3.274-7.407 7.28s3.302 7.279 7.407 7.279 7.407-3.273 7.407-7.28c0-4.005-3.302-7.278-7.407-7.278z"
+                    ></path>
+                  </svg>
+                  <span
+                    class="encore-text encore-text-body-medium-bold"
+                    data-encore-id="text"
+                    >Cerca</span
+                  >
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- SECONDO PANNELLO -->
+        <nav class="rounded py-3">
+          <div class="container">
+            <div class="d-flex justify-content-between align-itesm-center mb-3">
+              <a href="#">
+                <svg
+                  data-encore-id="icon"
+                  role="img"
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  class="me-3"
+                  width="25"
+                  height="25"
+                  fill="#a7a7a7"
+                >
+                  <path
+                    d="M3 22a1 1 0 0 1-1-1V3a1 1 0 0 1 2 0v18a1 1 0 0 1-1 1zM15.5 2.134A1 1 0 0 0 14 3v18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V6.464a1 1 0 0 0-.5-.866l-6-3.464zM9 2a1 1 0 0 0-1 1v18a1 1 0 1 0 2 0V3a1 1 0 0 0-1-1z"
+                  ></path>
+                </svg>
+                <span>La tua libreria</span>
+              </a>
+              <span
+                aria-hidden="true"
+                class="IconWrapper__Wrapper-sc-16usrgb-0 hYdsxw"
+              >
+                <svg
+                  data-encore-id="icon"
+                  role="img"
+                  aria-hidden="true"
+                  viewBox="0 0 16 16"
+                  class=""
+                  width="20"
+                  height="20"
+                  fill="#b3b3b3"
+                >
+                  <path
+                    d="M15.25 8a.75.75 0 0 1-.75.75H8.75v5.75a.75.75 0 0 1-1.5 0V8.75H1.5a.75.75 0 0 1 0-1.5h5.75V1.5a.75.75 0 0 1 1.5 0v5.75h5.75a.75.75 0 0 1 .75.75z"
+                  ></path>
+                </svg>
+              </span>
+            </div>
+
+            <div class="d-flex mb-3 overflow-x-auto align-items-center">
+              <div>
+                <p class="menu-btn rounded-pill px-3">Playlists</p>
+              </div>
+              <div>
+                <p class="menu-btn rounded-pill px-3">Artisti</p>
+              </div>
+              <div>
+                <p class="menu-btn rounded-pill px-3">Album</p>
+              </div>
+              <div class="text-nowrap">
+                <p class="menu-btn rounded-pill px-3">Podcasts & Shows</p>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-itesm-center mb-3">
+              <svg
+                data-encore-id="icon"
+                role="img"
+                aria-hidden="true"
+                class="me-3"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="#a7a7a7"
+              >
+                <path
+                  d="M10.533 1.27893C5.35215 1.27893 1.12598 5.41887 1.12598 10.5579C1.12598 15.697 5.35215 19.8369 10.533 19.8369C12.767 19.8369 14.8235 19.0671 16.4402 17.7794L20.7929 22.132C21.1834 22.5226 21.8166 22.5226 22.2071 22.132C22.5976 21.7415 22.5976 21.1083 22.2071 20.7178L17.8634 16.3741C19.1616 14.7849 19.94 12.7634 19.94 10.5579C19.94 5.41887 15.7138 1.27893 10.533 1.27893ZM3.12598 10.5579C3.12598 6.55226 6.42768 3.27893 10.533 3.27893C14.6383 3.27893 17.94 6.55226 17.94 10.5579C17.94 14.5636 14.6383 17.8369 10.533 17.8369C6.42768 17.8369 3.12598 14.5636 3.12598 10.5579Z"
+                ></path>
+              </svg>
+              <svg
+                data-encore-id="icon"
+                role="img"
+                aria-hidden="true"
+                class="me-3 d-none"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="#ffffff"
+              >
+                <path
+                  d="M15.356 10.558c0 2.623-2.16 4.75-4.823 4.75-2.664 0-4.824-2.127-4.824-4.75s2.16-4.75 4.824-4.75c2.664 0 4.823 2.127 4.823 4.75z"
+                ></path>
+                <path
+                  d="M1.126 10.558c0-5.14 4.226-9.28 9.407-9.28 5.18 0 9.407 4.14 9.407 9.28a9.157 9.157 0 0 1-2.077 5.816l4.344 4.344a1 1 0 0 1-1.414 1.414l-4.353-4.353a9.454 9.454 0 0 1-5.907 2.058c-5.18 0-9.407-4.14-9.407-9.28zm9.407-7.28c-4.105 0-7.407 3.274-7.407 7.28s3.302 7.279 7.407 7.279 7.407-3.273 7.407-7.28c0-4.005-3.302-7.278-7.407-7.278z"
+                ></path>
+              </svg>
+              <span>
+                <small>Recents</small>
+                <svg
+                  data-encore-id="icon"
+                  role="img"
+                  aria-hidden="true"
+                  viewBox="0 0 16 16"
+                  class=""
+                  width="20"
+                  height="20"
+                  fill="#a7a7a7"
+                >
+                  <path
+                    d="M15 14.5H5V13h10v1.5zm0-5.75H5v-1.5h10v1.5zM15 3H5V1.5h10V3zM3 3H1V1.5h2V3zm0 11.5H1V13h2v1.5zm0-5.75H1v-1.5h2v1.5z"
+                  ></path>
+                </svg>
+              </span>
+            </div>
+            <div class="playlists-container" id="playlists">
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-1.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">Gi&ugrave;</h5>
+                  <small>Album</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-2.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">
+                    pov: la tua estate &egrave; un film
+                  </h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-3.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">Massima Concetrazione</h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-4.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">Peaceful Piano</h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-5.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">lofi beats</h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-6.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">Jazz Vibes</h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-7.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">Caff&egrave; del Buongiorno</h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-8.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">sanguegiovane</h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-9.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">Canta Sotto La Doccia</h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-10.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">Operazione Buonumore!</h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-11.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">Mercury</h5>
+                  <small>Album</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-12.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">Respira</h5>
+                  <small>Album</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-13.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">Pulizie di Casa</h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-14.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">Allenamento a Casa</h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-15.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">Casa Dolce Casa</h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-16.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">Lavorare da Casa</h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-17.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">New Music - Friday</h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-18.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">Estate 2022</h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+              <div class="d-flex mb-1">
+                <img
+                  src="./assets 2/imgs/main/image-19.jpg"
+                  alt=""
+                  class="me-3"
+                  width="50"
+                  height="50"
+                />
+                <div>
+                  <h5 class="line-clamp">Street Culto</h5>
+                  <small>Playlist</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- CHIUSURA CONTAINER -->
+        </nav>
+      </aside>
+
+      <!-- MAIN CONTEINER -->
+      <main class="overflow-x-hidden overflow-y-auto">
+        <div class="d-flex justify-content-evenly pt-3 row">
+          <!-- HEADER -->
+          <header class="d-flex justify-content-between align-items-baseline">
+            <div class="d-none d-md-flex ps-3">
+              <button class="nextBtn text-center">
+                <svg
+                  data-encore-id=" icon"
+                  role="img"
+                  aria-hidden="true"
+                  viewBox="0 0 16 16"
+                  width=" 15px"
+                  height="15px"
+                  fill="#b3b3b3"
+                >
+                  <path
+                    d="M11.03.47a.75.75 0 0 1 0 1.06L4.56 8l6.47 6.47a.75.75 0 1 1-1.06 1.06L2.44 8 9.97.47a.75.75 0 0 1 1.06 0z"
+                  ></path>
+                </svg>
+              </button>
+              <button class="nextBtn text-center">
+                <div>
+                  <svg
+                    data-encore-id="icon"
+                    role="img"
+                    aria-hidden="true"
+                    viewBox="0 0 16 16"
+                    width=" 15px"
+                    height="15px"
+                    fill="#b3b3b3"
+                  >
+                    <path
+                      d=" M4.97.47a.75.75 0 0 0 0 1.06L11.44 8l-6.47 6.47a.75.75 0 1 0 1.06
+                                        1.06L13.56 8 6.03.47a.75.75 0 0 0-1.06 0z"
+                    ></path>
+                  </svg>
+                </div>
+              </button>
+            </div>
+            <div class="d-flex align-items-baseline d-none d-md-flex pe-3">
+              <div class="p-2 text-black">
+                <a class="iscriviti" href="#">Iscriviti</a>
+              </div>
+              <div class="p-2">
+                <button class="btnAccedi px-3 py-2">Accedi</button>
+              </div>
+            </div>
+          </header>
+
+          <!-- ALBUM -->
+          <section class="pb-2">
+            <div class="d-flex flex-column flex-md-row p-3">
+              <!-- DIV CON FRECCE PER SPOSTARE GLI ALBUM -->
+              <div class="d-flex row">
+                <div class="d-flex d-md-none col-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-arrow-left"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"
+                    />
+                  </svg>
+                </div>
+                <div class="d-md-flex col-10 col-md-12">
+                  <img
+                    id="imgAlbum"
+                    src=" ./assets 2/imgs/main/image-11.jpg"
+                    alt="album"
+                    width="100%"
+                  />
+                </div>
+              </div>
+              <!-- DESCRIZIONE ALBUM -->
+              <div class="row align-items-end ps-3">
+                <div class="d-none d-md-block">
+                  <p>Album</p>
+                </div>
+                <h1 id="titoloAlbum">Titolo Album</h1>
+                <div class="container">
+                  <div
+                    class="d-flex flex-column flex-md-row align-items-md-center"
+                  >
+                    <div class="fw-medium d-flex align-items-center">
+                      <img
+                        id="imgArtist"
+                        class="imgArtistAlbum"
+                        src="./assets 2/imgs/main/image-11.jpg"
+                        alt="Album Pic"
+                        width="30px"
+                      />
+                      <span
+                        id="nomeArtistaAlbum"
+                        class="nomeArtistaAlbum m-0 ps-1"
+                        >Nome</span
+                      >
+                    </div>
+
+                    <!-- DIV DETTAGLI ALBUM  -->
+                    <div class="d-flex md-row align-items-center mt-2 mt-md-0">
+                      <div class="d-md-none">
+                        <span>Album</span>
+                      </div>
+
+                      <div>
+                        <span id="albumYear" class="col ps-1">Anno</span>
+                      </div>
+                      <div>
+                        <span
+                          id="numberSongs"
+                          class="d-none d-md-block col ps-1"
+                          >N.Brani</span
+                        >
+                      </div>
+                      <div>
+                        <span
+                          id="albumLength"
+                          class="d-none d-md-block col ps-1"
+                          >tot.Album</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- ELENCO BRANI -->
+          <section class="elencoBraniAlbum">
+            <!-- MOBILE SEZIONE PLAY ANTERIMA -->
+            <div class="row p-4 col-12 d-md-none align-items-baseline">
+              <!-- HEART -->
+              <div class="col-2">
+                <span>
+                  <!--EMPTY HEART  -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="#b3b3b3"
+                    class="bi bi-suit-heart"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.6 7.6 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z"
+                    />
+                  </svg>
+                </span>
+                <!-- FULL HEART -->
+                <span class="d-none"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="#b3b3b3"
+                    class="bi bi-suit-heart-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <!-- SVG DOWNLOAD -->
+              <div class="col-2">
+                <!-- DOWNLOAD OFF -->
+                <span class=""
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="#b3b3b3"
+                    class="bi bi-arrow-down-circle"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
+                    />
+                  </svg>
+                </span>
+                <!-- DOWNLOAD ON  -->
+                <span class="d-none"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="#b3b3b3"
+                    class="bi bi-arrow-down-circle-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"
+                    />
+                  </svg>
+                </span>
+              </div>
+              <!-- SVG THREE DOTS VERTICAL -->
+              <div id="treeeDotsVertical" class="col-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="#b3b3b3"
+                  class="bi bi-three-dots-vertical"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"
+                  />
+                </svg>
+              </div>
+              <!--SHUFFLE -->
+              <div
+                class="col-6 text-end d-flex align-items-baseline justify-content-end"
+              >
+                <div class="me-4">
+                  <svg
+                    data-encore-id="icon"
+                    role="img"
+                    aria-hidden="true"
+                    viewBox="0 0 16 16"
+                    class="Svg-sc-ytk21e-0 dYnaPI mr-3"
+                    width="24"
+                    height="24"
+                    fill="#b3b3b3"
+                  >
+                    <path
+                      d="M13.151.922a.75.75 0 1 0-1.06 1.06L13.109 3H11.16a3.75 3.75 0 0 0-2.873 1.34l-6.173 7.356A2.25 2.25 0 0 1 .39 12.5H0V14h.391a3.75 3.75 0 0 0 2.873-1.34l6.173-7.356a2.25 2.25 0 0 1 1.724-.804h1.947l-1.017 1.018a.75.75 0 0 0 1.06 1.06L15.98 3.75 13.15.922zM.391 3.5H0V2h.391c1.109 0 2.16.49 2.873 1.34L4.89 5.277l-.979 1.167-1.796-2.14A2.25 2.25 0 0 0 .39 3.5z"
+                    ></path>
+                    <path
+                      d="m7.5 10.723.98-1.167.957 1.14a2.25 2.25 0 0 0 1.724.804h1.947l-1.017-1.018a.75.75 0 1 1 1.06-1.06l2.829 2.828-2.829 2.828a.75.75 0 1 1-1.06-1.06L13.109 13H11.16a3.75 3.75 0 0 1-2.873-1.34l-.787-.938z"
+                    ></path>
+                  </svg>
+                </div>
+                <!-- SVG PLAY -->
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="70"
+                    height="70"
+                    fill="#1cdf63"
+                    class="bi bi-play-circle-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="container pt-3">
+              <div class="row">
+                <div class="p-4 col-12 d-none d-md-flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="70"
+                    height="70"
+                    fill="#1cdf63"
+                    class="bi bi-play-circle-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"
+                    />
+                  </svg>
+                  <button class="buttonPreferit ps-4">
+                    <svg
+                      data-encore-id="icon"
+                      role="img"
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      class="fill"
+                      fill="#a7a7a7"
+                    >
+                      <path
+                        d="M11.999 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm-11 9c0-6.075 4.925-11 11-11s11 4.925 11 11-4.925 11-11 11-11-4.925-11-11z"
+                      ></path>
+                      <path
+                        d="M17.999 12a1 1 0 0 1-1 1h-4v4a1 1 0 1 1-2 0v-4h-4a1 1 0 1 1 0-2h4V7a1 1 0 1 1 2 0v4h4a1 1 0 0 1 1 1z"
+                      ></path>
+                    </svg>
+                  </button>
+                  <button class="buttonPreferit ps-1">
+                    <svg
+                      data-encore-id="icon"
+                      role="img"
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      class="Svg-sc-ytk21e-0 cqasRA"
+                      fill="#a7a7a7"
+                      width="30"
+                      height="30"
+                    >
+                      <path
+                        d="M4.5 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm15 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm-7.5 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="d-none d-md-block container border-bottom border-light textColor"
+            >
+              <div class="d-flex row">
+                <div class="col-1 text-center">
+                  <h6>#</h6>
+                </div>
+                <div class="col-6">
+                  <h6>TITOLO</h6>
+                </div>
+                <div class="col-3 text-end">
+                  <h6 class="textColor">RIPRODUZIONE</h6>
+                </div>
+                <div class="d-flex col-2 ps-3 justify-content-center">
+                  <svg
+                    data-encore-id="icon"
+                    role="img"
+                    aria-hidden="true"
+                    viewBox="0 0 16 16"
+                    fill="#a7a7a7"
+                    width="20"
+                    height="20"
+                  >
+                    <path
+                      d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"
+                    ></path>
+                    <path
+                      d="M8 3.25a.75.75 0 0 1 .75.75v3.25H11a.75.75 0 0 1 0 1.5H7.25V4A.75.75 0 0 1 8 3.25z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- RIGHT SIDEBAR -->
+      <aside id="activities" class="d-none d-lg-block activity-container">
+        <div class="container mt-2 right-sidebar rounded">
+          <div class="d-flex justify-content-between align-items-center pt-1">
+            <div class="text-nowrap me-3">
+              <small>Attivit&agrave; amici</small>
+            </div>
+            <div class="d-flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="#a7a7a7"
+                class="bi bi-person-add"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"
+                />
+                <path
+                  d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"
+                />
+              </svg>
+              <svg
+                id="hideActivitiesBtn"
+                role="button"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="#a7a7a7"
+                class="bi bi-x ms-2"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
+                />
+              </svg>
+            </div>
+          </div>
+          <div class="friends-activity-container">
+            <div class="my-3 d-flex align-items-start">
+              <img
+                src="https://this-person-does-not-exist.com/img/avatar-gen110b5c7a45247901f650ca5cdafe173f.jpg"
+                alt=""
+                class="rounded-circle profile-pic align-self-start me-3"
+              />
+              <div class="info me-auto">
+                <div class="nome">Divino Otelma</div>
+                <div class="dettagli">
+                  Yellow - Coldplay <br />
+                  <small class="line-clamp">Parachutes</small>
+                </div>
+              </div>
+              <div class="friends-activity flex-shrink-0">
+                <small>Adesso</small>
+              </div>
+            </div>
+            <div class="my-3 d-flex align-items-start">
+              <img
+                src="https://this-person-does-not-exist.com/img/avatar-gen980b4a3398a24256b07f1e3ed3609c12.jpg"
+                alt=""
+                class="rounded-circle profile-pic align-self-start me-3"
+              />
+              <div class="info me-auto">
+                <div class="nome">Whiskers</div>
+                <div class="dettagli">
+                  To &uuml; - Jack &Uuml; <br />
+                  <small class="line-clamp"
+                    >Skrillex and Diplo Present Jack &Uuml;</small
+                  >
+                </div>
+              </div>
+              <div class="friends-activity flex-shrink-0">
+                <small>1 ora</small>
+              </div>
+            </div>
+            <div class="my-3 d-flex align-items-start">
+              <img
+                src="https://this-person-does-not-exist.com/img/avatar-gendc62f1abf8270c17f837cdc0961ddc93.jpg"
+                alt=""
+                class="rounded-circle profile-pic align-self-start me-3"
+              />
+              <div class="info me-auto">
+                <div class="nome">Sniper62</div>
+                <div class="dettagli">
+                  Thunderstruck - AC/DC <br />
+                  <small class="line-clamp">The Razors Edge</small>
+                </div>
+              </div>
+              <div class="friends-activity flex-shrink-0">
+                <small>5 ore</small>
+              </div>
+            </div>
+            <div class="my-3 d-flex align-items-start">
+              <img
+                src="https://this-person-does-not-exist.com/img/avatar-gen2736293209f40548e2492e6c53b1f099.jpg"
+                alt=""
+                class="rounded-circle profile-pic align-self-start me-3"
+              />
+              <div class="info me-auto">
+                <div class="nome">Tom Bombadil</div>
+                <div class="dettagli">
+                  Stivali E Colbacco - Adriano Celentano <br />
+                  <small class="line-clamp">Soli</small>
+                </div>
+              </div>
+              <div class="friends-activity flex-shrink-0">
+                <small>6 ore</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <!-- CHIUSURA PAGE CONTAINER -->
+
+    <!-- PLAYER -->
+    <footer
+      class="container-fluid d-none d-md-flex justify-content-between align-items-center"
+    >
+      <!-- LEFT -->
+      <div
+        class="d-flex footer-flex-div align-items-center justify-content-start player"
+      >
+        <img
+          src="./assets 2/imgs/main/image-12.jpg"
+          alt=""
+          width="60"
+          class="me-2 rounded-1 player-cover"
+        />
+        <div class="d-flex flex-column me-5 player-info">
+          <div class="player-title">Titolo</div>
+          <small class="player-artist">Artista</small>
+        </div>
+        <button class="btn">
+          <svg
+            data-encore-id="icon"
+            role="img"
+            aria-hidden="true"
+            viewBox="0 0 16 16"
+            class="Svg-sc-ytk21e-0 dYnaPI"
+            width="15"
+            height="15"
+            fill="#b3b3b3"
+          >
+            <path
+              d="M8 1.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"
+            ></path>
+            <path
+              d="M11.75 8a.75.75 0 0 1-.75.75H8.75V11a.75.75 0 0 1-1.5 0V8.75H5a.75.75 0 0 1 0-1.5h2.25V5a.75.75 0 0 1 1.5 0v2.25H11a.75.75 0 0 1 .75.75z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <!-- COMANDI PLAYER -->
+      <div class="d-flex flex-column footer-flex-div">
+        <div class="d-flex justify-content-center column-gap-3">
+          <button class="btn">
+            <svg
+              data-encore-id="icon"
+              role="img"
+              aria-hidden="true"
+              viewBox="0 0 16 16"
+              class="Svg-sc-ytk21e-0 dYnaPI"
+              width="15"
+              height="15"
+              fill="#b3b3b3"
+            >
+              <path
+                d="M13.151.922a.75.75 0 1 0-1.06 1.06L13.109 3H11.16a3.75 3.75 0 0 0-2.873 1.34l-6.173 7.356A2.25 2.25 0 0 1 .39 12.5H0V14h.391a3.75 3.75 0 0 0 2.873-1.34l6.173-7.356a2.25 2.25 0 0 1 1.724-.804h1.947l-1.017 1.018a.75.75 0 0 0 1.06 1.06L15.98 3.75 13.15.922zM.391 3.5H0V2h.391c1.109 0 2.16.49 2.873 1.34L4.89 5.277l-.979 1.167-1.796-2.14A2.25 2.25 0 0 0 .39 3.5z"
+              ></path>
+              <path
+                d="m7.5 10.723.98-1.167.957 1.14a2.25 2.25 0 0 0 1.724.804h1.947l-1.017-1.018a.75.75 0 1 1 1.06-1.06l2.829 2.828-2.829 2.828a.75.75 0 1 1-1.06-1.06L13.109 13H11.16a3.75 3.75 0 0 1-2.873-1.34l-.787-.938z"
+              ></path>
+            </svg>
+          </button>
+          <button class="btn">
+            <svg
+              data-encore-id="icon"
+              role="img"
+              aria-hidden="true"
+              viewBox="0 0 16 16"
+              class="Svg-sc-ytk21e-0 dYnaPI"
+              width="15"
+              height="15"
+              fill="#b3b3b3"
+            >
+              <path
+                d="M3.3 1a.7.7 0 0 1 .7.7v5.15l9.95-5.744a.7.7 0 0 1 1.05.606v12.575a.7.7 0 0 1-1.05.607L4 9.149V14.3a.7.7 0 0 1-.7.7H1.7a.7.7 0 0 1-.7-.7V1.7a.7.7 0 0 1 .7-.7h1.6z"
+              ></path>
+            </svg>
+          </button>
+          <button class="btn play-btn rounded-circle">
+            <svg
+              id="play-pause"
+              data-encore-id="icon"
+              role="img"
+              aria-hidden="true"
+              viewBox="0 0 16 16"
+              class="Svg-sc-ytk21e-0 dYnaPI"
+              width="15"
+              height="15"
+              fill="#000000"
+            >
+              <path
+                d=" M3 1.713a.7.7 0 0 1 1.05-.607l10.89 6.288a.7.7 0 0 1 0 1.212L4.05 14.894A.7.7 0 0 1 3 14.288V1.713z"
+              ></path>
+            </svg>
+          </button>
+          <button class="btn">
+            <svg
+              data-encore-id="icon"
+              role="img"
+              aria-hidden="true"
+              viewBox="0 0 16 16"
+              class="Svg-sc-ytk21e-0 dYnaPI"
+              width="15"
+              height="15"
+              fill="#b3b3b3"
+            >
+              <path
+                d="M12.7 1a.7.7 0 0 0-.7.7v5.15L2.05 1.107A.7.7 0 0 0 1 1.712v12.575a.7.7 0 0 0 1.05.607L12 9.149V14.3a.7.7 0 0 0 .7.7h1.6a.7.7 0 0 0 .7-.7V1.7a.7.7 0 0 0-.7-.7h-1.6z"
+              ></path>
+            </svg>
+          </button>
+          <button class="btn">
+            <svg
+              data-encore-id="icon"
+              role="img"
+              aria-hidden="true"
+              viewBox="0 0 16 16"
+              class="Svg-sc-ytk21e-0 dYnaPI"
+              width="15"
+              height="15"
+              fill="#b3b3b3"
+            >
+              <path
+                d=" M0 4.75A3.75 3.75 0 0 1 3.75 1h8.5A3.75 3.75 0 0 1 16 4.75v5a3.75 3.75 0 0 1-3.75 3.75H9.81l1.018 1.018a.75.75 0 1
+                        1-1.06 1.06L6.939 12.75l2.829-2.828a.75.75 0 1 1 1.06 1.06L9.811 12h2.439a2.25 2.25 0 0 0 2.25-2.25v-5a2.25 2.25 0 0
+                        0-2.25-2.25h-8.5A2.25 2.25 0 0 0 1.5 4.75v5A2.25 2.25 0 0 0 3.75 12H5v1.5H3.75A3.75 3.75 0 0 1 0 9.75v-5z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div
+          class="d-flex justify-content-center align-items-center column-gap-3"
+        >
+          <label for="progress-bar"
+            ><small id="current-time">0:01</small></label
+          >
+          <div
+            id="progressBarSong"
+            class="progress song-progress"
+            role="progressbar"
+            aria-label="Success example"
+            aria-valuenow="0"
+            aria-valuemin="0"
+            aria-valuemax="30"
+          >
+            <div
+              id="songBar"
+              class="progress-bar bg-success song-bar"
+              style="width: 0%"
+            ></div>
+          </div>
+          <label for="progress-bar"><small id="total-time">0:30</small></label>
+        </div>
+      </div>
+      <!-- RIGHT -->
+      <div
+        class="d-flex justify-content-end footer-flex-div align-items-center"
+      >
+        <button class="btn" id="showActivitiesBtn">
+          <svg
+            data-encore-id="icon"
+            role="img"
+            aria-hidden="true"
+            viewBox="0 0 16 16"
+            class="Svg-sc-ytk21e-0 dYnaPI"
+            width="15"
+            height="15"
+            fill="#b3b3b3"
+          >
+            <path d="M11.196 8 6 5v6l5.196-3z"></path>
+            <path
+              d="M15.002 1.75A1.75 1.75 0 0 0 13.252 0h-10.5a1.75 1.75 0 0 0-1.75 1.75v12.5c0 .966.783 1.75 1.75 1.75h10.5a1.75 1.75 0 0 0 1.75-1.75V1.75zm-1.75-.25a.25.25 0 0 1 .25.25v12.5a.25.25 0 0 1-.25.25h-10.5a.25.25 0 0 1-.25-.25V1.75a.25.25 0 0 1 .25-.25h10.5z"
+            ></path>
+          </svg>
+        </button>
+
+        <button class="btn">
+          <svg
+            data-encore-id="icon"
+            role="img"
+            aria-hidden="true"
+            viewBox="0 0 16 16"
+            class="Svg-sc-ytk21e-0 dYnaPI"
+            width="15"
+            height="15"
+            fill="#b3b3b3"
+          >
+            <path
+              d="M15 15H1v-1.5h14V15zm0-4.5H1V9h14v1.5zm-14-7A2.5 2.5 0 0 1 3.5 1h9a2.5 2.5 0 0 1 0 5h-9A2.5 2.5 0 0 1 1 3.5zm2.5-1a1 1 0 0 0 0 2h9a1 1 0 1 0 0-2h-9z"
+            ></path>
+          </svg>
+        </button>
+        <button class="btn">
+          <svg
+            data-encore-id="icon"
+            role="img"
+            aria-hidden="true"
+            viewBox="0 0 16 16"
+            class="Svg-sc-ytk21e-0 dYnaPI"
+            width="15"
+            height="15"
+            fill="#b3b3b3"
+          >
+            <path
+              d="M6 2.75C6 1.784 6.784 1 7.75 1h6.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0 1 14.25 15h-6.5A1.75 1.75 0 0 1 6 13.25V2.75zm1.75-.25a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h6.5a.25.25 0 0 0 .25-.25V2.75a.25.25 0 0 0-.25-.25h-6.5zm-6 0a.25.25 0 0 0-.25.25v6.5c0 .138.112.25.25.25H4V11H1.75A1.75 1.75 0 0 1 0 9.25v-6.5C0 1.784.784 1 1.75 1H4v1.5H1.75zM4 15H2v-1.5h2V15z"
+            ></path>
+            <path
+              d="M13 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm-1-5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
+            ></path>
+          </svg>
+        </button>
+        <label for="progressBarVolume" class="me-2">
+          <svg
+            data-encore-id="icon"
+            role="presentation"
+            aria-label="Volume high"
+            aria-hidden="true"
+            id="volume-icon"
+            viewBox="0 0 16 16"
+            class="Svg-sc-ytk21e-0 kcUFwU"
+            width="15"
+            height="15"
+            fill="#b3b3b3"
+          >
+            <path
+              d="M9.741.85a.75.75 0 0 1 .375.65v13a.75.75 0 0 1-1.125.65l-6.925-4a3.642 3.642 0 0 1-1.33-4.967 3.639 3.639 0 0 1 1.33-1.332l6.925-4a.75.75 0 0 1 .75 0zm-6.924 5.3a2.139 2.139 0 0 0 0 3.7l5.8 3.35V2.8l-5.8 3.35zm8.683 4.29V5.56a2.75 2.75 0 0 1 0 4.88z"
+            ></path>
+            <path
+              d="M11.5 13.614a5.752 5.752 0 0 0 0-11.228v1.55a4.252 4.252 0 0 1 0 8.127v1.55z"
+            ></path>
+          </svg>
+        </label>
+        <input type="range" id="volumeSlider" class="volume-slider" />
+
+        <button class="btn">
+          <svg
+            data-encore-id="icon"
+            role="img"
+            aria-hidden="true"
+            viewBox="0 0 16 16"
+            class="Svg-sc-ytk21e-0 dYnaPI"
+            width="15"
+            height="15"
+            fill="#b3b3b3"
+          >
+            <path
+              d="M6.53 9.47a.75.75 0 0 1 0 1.06l-2.72 2.72h1.018a.75.75 0 0 1 0 1.5H1.25v-3.579a.75.75 0 0 1 1.5 0v1.018l2.72-2.72a.75.75 0 0 1 1.06 0zm2.94-2.94a.75.75 0 0 1 0-1.06l2.72-2.72h-1.018a.75.75 0 1 1 0-1.5h3.578v3.579a.75.75 0 0 1-1.5 0V3.81l-2.72 2.72a.75.75 0 0 1-1.06 0z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <audio id="audio-player" style="display: none"></audio>
+    </footer>
+
+    <!-- Import JS Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <script src="./assets 2/js/album.js"></script>
+    <!-- Import JS personalizzati -->
+  </body>
+</html>

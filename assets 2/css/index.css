@@ -1,0 +1,97 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #ffffff;
+}
+
+.btn-dark {
+  background-color: #000000 !important;
+}
+
+.btn-success {
+  background-color: #1db954;
+}
+
+.annunci {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(30deg, rgba(0, 0, 0, 1) 0%, rgba(28, 28, 28, 1) 80%);
+}
+
+.hide-annunci {
+  background-color: #222222;
+  color: #b3b3b3;
+}
+
+.hero-img {
+  width: 200px;
+}
+
+.main-grid {
+  background-color: #2c2c2c;
+}
+
+.card-personalised {
+  background-color: #181818;
+  color: #b3b3b3;
+  border: none;
+}
+
+.card-title {
+  color: #ffffff;
+}
+
+.main-item {
+  background-color: #2c2c2c;
+}
+
+.line-clamp2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+svg:hover {
+  fill: #ffffff;
+}
+
+small {
+  color: #b3b3b3;
+}
+
+.suggested-pic {
+  width: 60px;
+}
+
+.mobile-player {
+  background-color: #262626;
+  position: fixed;
+  z-index: 99;
+  bottom: 100px;
+}
+
+.discoverArtistCard {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .cards-container {
+    margin-bottom: 9rem;
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .suggested-pic {
+    width: 75px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .suggested-pic {
+    width: 100px;
+  }
+}
